@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DofusTools - Récupération de Pierres d'Âme (MetaCpy)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Oxanium', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px #00ff9d, 0 0 10px #00ff9d;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a3a 0%, #0d0d25 100%);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 157, 0.2);
+        }
+        
+        .logo-container {
+            position: relative;
+        }
+        
+        .logo-hammer {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        
+        .feature-icon {
+            color: #00ff9d;
+            font-size: 1.5rem;
+        }
+        
+        .price-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .discord-btn {
+            background: #5865F2;
+            transition: all 0.3s;
+        }
+        
+        .discord-btn:hover {
+            background: #4752C4;
+            transform: translateY(-2px);
+        }
+        
+        .screenshot-placeholder {
+            background: linear-gradient(45deg, #1a1a3a 25%, #2a2a4a 50%, #1a1a3a 75%);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg border-b border-purple-900/50 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="logo-container">
+                        <div class="logo-glow"></div>
+                        <div class="logo-hammer text-3xl text-yellow-400">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                    </div>
+                    <span class="text-xl font-bold text-white">Dofus<span class="text-green-400">Tools</span></span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#features" class="text-gray-300 hover:text-white transition">Fonctionnalités</a>
+                <a href="index.html#products" class="text-gray-300 hover:text-white transition">Nos Produits</a>
+                <a href="index.html#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="index.html#contact" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md font-medium transition">Acheter</a>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <span class="neon-text">Récupération de Pierres d'Âme</span>
+                </h1>
+                <div class="w-24 h-1 bg-green-500 mb-8"></div>
+                <p class="text-gray-300 mb-8 text-lg max-w-3xl">
+                    L'outil de tri automatique de pierres d'âme le plus avancé pour Dofus. Économisez des heures de tri manuel et maximisez la valeur de vos captures d'âmes.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#pricing" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-md font-medium text-center transition">Acheter maintenant</a>
+                    <a href="#demo" class="px-6 py-3 border border-green-500 text-green-500 hover:bg-green-500/10 rounded-md font-medium text-center transition">
+                        <i class="fas fa-play mr-2"></i>Voir la Démo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tool Overview -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Vue d'ensemble de <span class="text-green-400">MetaCpy</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Qu'est-ce que MetaCpy?</h3>
+                        <p class="text-gray-300">
+                            MetaCpy est un système avancé d'automatisation pour la gestion des pierres d'âme dans Dofus. Grâce à notre technologie propriétaire de vision par ordinateur, l'outil identifie, trie et organise automatiquement vos pierres d'âmes, économisant des heures de travail manuel.
+                        </p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Pourquoi l'utiliser?</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Économisez des heures de tri manuel fastidieux</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Détection précise à 99.9% des âmes, y compris les archimonstres</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Intégration complète avec Metamob.fr pour suivre votre collection</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Traitement ultra-rapide: jusqu'à 1000 pierres par heure</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="screenshot-placeholder rounded-xl overflow-hidden border border-green-500/30 aspect-video"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-4">
+                Fonctionnalités <span class="text-yellow-400">Principales</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Notre outil combine plusieurs technologies avancées pour offrir une expérience de tri d'âmes sans précédent
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Vision par Ordinateur Avancée</h3>
+                    <p class="text-gray-300">
+                        Algorithmes propriétaires utilisant OpenCV pour détecter avec précision chaque pierre d'âme, quel que soit le thème d'interface ou la résolution d'écran utilisée.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Détection Multi-Méthodes</h3>
+                    <p class="text-gray-300">
+                        Utilisation de 7 algorithmes différents fonctionnant en parallèle pour assurer une précision inégalée, même dans des conditions difficiles.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Intégration Metamob.fr</h3>
+                    <p class="text-gray-300">
+                        Synchronisation transparente avec votre compte Metamob pour mettre à jour automatiquement votre collection et prioriser les pierres dont vous avez besoin.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Calibrage Intelligent</h3>
+                    <p class="text-gray-300">
+                        Système de calibrage automatique pour les positions d'inventaire et de banque, garantissant une précision au pixel près lors des manipulations.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Suivi de Progression</h3>
+                    <p class="text-gray-300">
+                        Tableau de bord détaillé affichant les statistiques de votre session: nombre d'âmes triées, types identifiés, temps d'exécution et bien plus.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Sécurité Maximale</h3>
+                    <p class="text-gray-300">
+                        Algorithmes de simulation de mouvements humains et fonctionnalités anti-détection pour une utilisation discrète et sécurisée.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-16 bg-gray-900/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Voir <span class="text-green-400">MetaCpy</span> en Action
+            </h2>
+            
+            <!-- Demo Video -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="aspect-w-16 aspect-h-9 bg-black rounded-xl overflow-hidden border border-gray-700 relative">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-play-circle text-6xl text-green-500 mb-4 hover:text-green-400 cursor-pointer transition"></i>
+                            <p class="text-gray-300">Cliquez pour lancer la vidéo de démonstration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-center text-white mb-8">
+                Captures d'écran
+            </h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Interface principale</p>
+                    </div>
+                </div>
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Détection en action</p>
+                    </div>
+                </div>
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Tableau de bord</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 bg-gradient-to-r from-gray-900/70 to-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Comment <span class="text-green-400">Ça Fonctionne</span>
+            </h2>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-green-400 text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Installation Simple</h3>
+                        <p class="text-gray-300">
+                            Téléchargez l'outil et suivez notre assistant d'installation guidé. Configuration en moins de 5 minutes.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-green-400 text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Calibrage</h3>
+                        <p class="text-gray-300">
+                            L'outil calibre automatiquement les positions de vos inventaires et banques pour une précision maximale.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-green-400 text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Automatisation</h3>
+                        <p class="text-gray-300">
+                            Lancez le processus et observez l'outil trier automatiquement vos pierres d'âme avec une précision incroyable.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-300 max-w-3xl mx-auto mb-8">
+                        Notre outil est conçu pour être simple d'utilisation tout en offrant des performances exceptionnelles. 
+                        Pas besoin d'être un expert en informatique pour l'utiliser efficacement.
+                    </p>
+                    
+                    <a href="#tutorials" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition inline-flex items-center">
+                        <i class="fas fa-book mr-2"></i> Voir les tutoriels détaillés
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorials -->
+    <section id="tutorials" class="py-16 bg-gray-900/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Tutoriels <span class="text-green-400">Vidéo</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Apprenez à utiliser MetaCpy efficacement avec nos tutoriels vidéo détaillés
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tutorial 1 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-green-500 mb-2"></i>
+                            <p class="text-gray-300">Installation et configuration</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Guide d'Installation</h3>
+                        <p class="text-gray-400 text-sm">
+                            Apprenez à installer et configurer MetaCpy correctement pour des performances optimales.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tutorial 2 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-green-500 mb-2"></i>
+                            <p class="text-gray-300">Calibrage avancé</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Calibrage Parfait</h3>
+                        <p class="text-gray-400 text-sm">
+                            Découvrez comment calibrer avec précision l'outil pour votre configuration spécifique.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tutorial 3 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-green-500 mb-2"></i>
+                            <p class="text-gray-300">Intégration Metamob</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Synchronisation Metamob</h3>
+                        <p class="text-gray-400 text-sm">
+                            Comment connecter votre compte Metamob.fr et synchroniser votre collection.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Tarification <span class="text-yellow-400">Simple</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Une seule formule, sans abonnement, accès à vie à MetaCpy
+            </p>
+            
+            <div class="max-w-xl mx-auto">
+                <div class="bg-gray-900/70 rounded-xl overflow-hidden border-2 border-green-500/30 transform hover:scale-[1.01] transition-all duration-300">
+                    <div class="bg-gray-800 p-6 text-center border-b border-gray-700">
+                        <h3 class="text-2xl font-bold text-yellow-400">Licence à Vie</h3>
+                        <div class="flex justify-center mt-4">
+                            <span class="text-4xl font-bold text-white">€150</span>
+                            <span class="text-gray-400 ml-2 self-end mb-1">paiement unique</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Accès illimité à vie à l'outil complet</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Toutes les mises à jour futures incluses</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Support prioritaire via Discord</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Intégration Metamob complète</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Accès aux tutoriels vidéo exclusifs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Garantie satisfaction 100%</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="grid grid-cols-3 gap-4 text-center mb-8">
+                            <div>
+                                <p class="font-bold text-white">1 500 MAD</p>
+                                <p class="text-xs text-gray-400">Dirham</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">€150</p>
+                                <p class="text-xs text-gray-400">Euro</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">$144</p>
+                                <p class="text-xs text-gray-400">USD/Crypto</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="index.html#contact" class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium transition inline-flex items-center">
+                                <i class="fas fa-shopping-cart mr-2"></i> Acheter maintenant
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-gray-800/50 p-4 rounded-xl border border-yellow-500/30 text-center">
+                    <p class="text-gray-300 text-sm">
+                        <i class="fas fa-shield-alt text-yellow-500 mr-2"></i>
+                        Garantie de remboursement à 100% si l'outil ne fonctionne pas comme prévu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="py-16 bg-gray-900/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Avis de nos <span class="text-green-400">Utilisateurs</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Review 1 -->
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mr-3">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">ArchmageX</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "J'ai trié plus de 2000 pierres d'âme en une seule soirée. L'intégration avec Metamob est parfaite et m'a fait économiser des heures de travail manuel. Merci!"
+                    </p>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mr-3">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">SoulCollector99</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "La précision de détection est incroyable. Même les pierres les plus rares sont correctement identifiées. Le support client est également très réactif."
+                    </p>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mr-3">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">DofusLegend</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">
+                        "J'étais sceptique au début, mais après avoir essayé l'outil, je suis convaincu. Installation simple, interface intuitive et résultats impressionnants. Ça vaut largement son prix!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gradient-to-r from-gray-900/70 to-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Questions <span class="text-green-400">Fréquentes</span>
+            </h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">L'outil est-il détectable par Ankama?</h4>
+                    <p class="text-gray-300">
+                        Notre outil utilise des techniques avancées pour simuler des interactions humaines et éviter la détection. Nous utilisons des mouvements de souris réalistes et des temps d'attente variables. Aucun de nos utilisateurs n'a signalé de bannissement lié à l'utilisation de notre outil depuis son lancement.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Comment l'outil reconnaît-il les pierres d'âme?</h4>
+                    <p class="text-gray-300">
+                        Notre système utilise une combinaison de techniques de vision par ordinateur, dont la reconnaissance de formes, l'analyse de couleurs et le traitement d'image avancé. Nous utilisons 7 méthodes différentes en parallèle pour garantir une détection fiable, même dans des conditions variables.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Puis-je utiliser l'outil pendant que je fais autre chose?</h4>
+                    <p class="text-gray-300">
+                        L'outil nécessite que la fenêtre Dofus soit active pendant son utilisation. Cependant, vous pouvez configurer des sessions automatisées et laisser l'outil fonctionner sans surveillance. Un mode multi-compte est également disponible pour les joueurs qui gèrent plusieurs personnages.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Quelles sont les exigences système?</h4>
+                    <p class="text-gray-300">
+                        Configuration minimale: Windows 10/11, Python 3.8+ (installateur automatique inclus), 4GB de RAM. L'outil est optimisé pour fonctionner sur des configurations modestes sans impacter les performances de Dofus.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Comment puis-je obtenir de l'aide en cas de problème?</h4>
+                    <p class="text-gray-300">
+                        Notre équipe de support est disponible via Discord. Temps de réponse moyen: quelques minutes à quelques heures maximum. Nous proposons également des sessions d'assistance à distance pour les problèmes complexes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-900/50 p-8 rounded-xl border border-green-500/30 text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">
+                    Prêt à <span class="text-green-400">Révolutionner</span> votre expérience de tri d'âmes?
+                </h2>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Rejoignez des centaines de joueurs satisfaits qui économisent des heures de travail fastidieux grâce à MetaCpy.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="index.html#contact" class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium transition inline-flex items-center justify-center">
+                        <i class="fas fa-shopping-cart mr-2"></i> Acheter maintenant
+                    </a>
+                    <a href="#demo" class="px-8 py-3 border border-green-500 text-green-500 hover:bg-green-500/10 rounded-md font-medium transition inline-flex items-center justify-center">
+                        <i class="fas fa-play mr-2"></i> Voir la démo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg border-t border-purple-900/50 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <div class="logo-hammer text-xl text-yellow-400">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <span class="text-lg font-bold text-white">Dofus<span class="text-green-400">Tools</span></span>
+                </div>
+                
+                <div class="text-gray-400 text-sm mb-4 md:mb-0 text-center">
+                    © 2025 DofusTools. Tous droits réservés.
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="index.html#contact" class="text-gray-400 hover:text-green-400 transition">
+                        <i class="fab fa-discord text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-800/50 text-center">
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">Accueil</a>
+                    <a href="index.html#products" class="text-gray-400 hover:text-white transition">Nos Produits</a>
+                    <a href="index.html#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            // In a real implementation, you would add a click handler to show/hide mobile menu
+        });
+    </script>
+</body>
+</html>
