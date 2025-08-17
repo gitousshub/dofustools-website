@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DofusTools - Archimonster Helper (ArchCpy)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Oxanium', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a3a 0%, #0d0d25 100%);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
+        }
+        
+        .logo-container {
+            position: relative;
+        }
+        
+        .logo-hammer {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        
+        .feature-icon {
+            color: #00aaff;
+            font-size: 1.5rem;
+        }
+        
+        .price-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .discord-btn {
+            background: #5865F2;
+            transition: all 0.3s;
+        }
+        
+        .discord-btn:hover {
+            background: #4752C4;
+            transform: translateY(-2px);
+        }
+        
+        .screenshot-placeholder {
+            background: linear-gradient(45deg, #1a1a3a 25%, #2a2a4a 50%, #1a1a3a 75%);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg border-b border-purple-900/50 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="logo-container">
+                        <div class="logo-glow"></div>
+                        <div class="logo-hammer text-3xl text-yellow-400">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                    </div>
+                    <span class="text-xl font-bold text-white">Dofus<span class="text-green-400">Tools</span></span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-300 hover:text-white transition">Accueil</a>
+                <a href="index.html#products" class="text-gray-300 hover:text-white transition">Nos Produits</a>
+                <a href="index.html#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="index.html#contact" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md font-medium transition">Acheter</a>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <span class="neon-text">Archi-Copy</span>
+                </h1>
+                <div class="w-24 h-1 bg-blue-500 mb-8"></div>
+                <p class="text-gray-300 mb-8 text-lg max-w-3xl">
+                    L'outil ultime pour accélérer votre collection d'archimonsters dans Dofus. Copiez les noms instantanément sans changer de fenêtre et économisez un temps précieux.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#pricing" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-md font-medium text-center transition">Acheter maintenant</a>
+                    <a href="#demo" class="px-6 py-3 border border-blue-500 text-blue-500 hover:bg-blue-500/10 rounded-md font-medium text-center transition">
+                        <i class="fas fa-play mr-2"></i>Voir la Démo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tool Overview -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Vue d'ensemble de <span class="text-blue-400">Archi-Copy</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Qu'est-ce que Archi-Copy?</h3>
+                        <p class="text-gray-300">
+                            Archi-Copy est un assistant intelligent pour Dofus qui accélère considérablement la récupération des archimonstres. L'application affiche le nom de l'archimonstre et vous permet de le copier instantanément sans avoir à alterner constamment entre le jeu et le site Metamob.fr. De plus, après chaque copie, Archi-Copy affiche automatiquement le nom du prochain archimonstre de la liste, sans que vous ayez besoin de passer manuellement au suivant, rendant ainsi votre progression encore plus fluide et efficace.
+                        </p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Pourquoi l'utiliser?</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Économisez du temps en éliminant les changements constants de fenêtre</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Réduisez la fatigue oculaire grâce à une interface sombre adaptée</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Progression automatique à chaque copie pour un workflow fluide</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Fenêtre toujours visible, pour que vous n'ayez plus besoin de changer de fenêtre.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="screenshot-placeholder rounded-xl overflow-hidden border border-blue-500/30 aspect-video"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-4">
+                Fonctionnalités <span class="text-yellow-400">Principales</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Notre assistant d'archimonsters est conçu pour améliorer votre expérience de jeu et accélérer votre préparation de pack d'archimonstres.
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Copie Instantanée</h3>
+                    <p class="text-gray-300">
+                        Copiez les noms des archimonsters en un seul clic, sans avoir à chercher ou à taper manuellement les noms.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Progression Automatique</h3>
+                    <p class="text-gray-300">
+                        Après chaque copie, l'application passe automatiquement au prochain archimonster de la liste, sans aucune action supplémentaire.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-thumbtack"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Toujours Visible</h3>
+                    <p class="text-gray-300">
+                        L'application reste visible, éliminant le besoin de basculer constamment entre les fenêtres.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-list-ol"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Navigation Complète</h3>
+                    <p class="text-gray-300">
+                        Naviguez facilement dans la liste avec les boutons précédent, suivant et réinitialiser pour un contrôle total de votre progression.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Interface Sombre</h3>
+                    <p class="text-gray-300">
+                        Design sombre agréable qui réduit la fatigue oculaire lors des longues sessions.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Suivi de Progression</h3>
+                    <p class="text-gray-300">
+                        Indicateur de progression qui vous montre exactement où vous en êtes dans votre collection d'archimonsters.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-16 bg-gray-900/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Voir <span class="text-blue-400">Archi-Copy</span> en Action
+            </h2>
+            
+            <!-- Demo Video -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="aspect-w-16 aspect-h-9 bg-black rounded-xl overflow-hidden border border-gray-700 relative">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-play-circle text-6xl text-blue-500 mb-4 hover:text-blue-400 cursor-pointer transition"></i>
+                            <p class="text-gray-300">Cliquez pour lancer la vidéo de démonstration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-center text-white mb-8">
+                Démonstration
+            </h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Interface principale</p>
+                    </div>
+                </div>
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Utilisation avec le jeu</p>
+                    </div>
+                </div>
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Navigation dans la liste</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 bg-gradient-to-r from-gray-900/70 to-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Comment <span class="text-blue-400">Ça Fonctionne</span>
+            </h2>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-blue-400 text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Installation</h3>
+                        <p class="text-gray-300">
+                            Téléchargez et lancez l'application Archi-Copy. La liste complète des archimonsters sera chargée automatiquement.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-blue-400 text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Utilisation</h3>
+                        <p class="text-gray-300">
+                            Cliquez sur le bouton "Copy" pour copier le nom de l'archimonster, puis collez-le dans le jeu. L'outil affichera automatiquement le prochain archimonster.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-blue-400 text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Navigation</h3>
+                        <p class="text-gray-300">
+                            Utilisez les boutons "Previous" et "Next" pour naviguer manuellement dans la liste, ou "Reset" pour revenir au début de la liste d'archimonsters.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-300 max-w-3xl mx-auto mb-8">
+                        Notre assistant s'adapte continuellement aux conditions du jeu et ajuste ses stratégies pour maximiser vos profits à chaque session de farming.
+                    </p>
+                    
+                    <a href="#tutorials" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition inline-flex items-center">
+                        <i class="fas fa-book mr-2"></i> Voir les tutoriels détaillés
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorials -->
+    <section id="tutorials" class="py-16 bg-gray-900/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Tutoriels <span class="text-blue-400">Vidéo</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Apprenez à utiliser ArchCpy efficacement avec nos tutoriels vidéo détaillés
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tutorial 1 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-blue-500 mb-2"></i>
+                            <p class="text-gray-300">Installation et démarrage</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Guide d'Installation</h3>
+                        <p class="text-gray-400 text-sm">
+                            Comment installer et configurer ArchCpy pour une utilisation optimale avec Dofus.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tutorial 2 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-blue-500 mb-2"></i>
+                            <p class="text-gray-300">Utilisation efficace</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Workflow Optimisé</h3>
+                        <p class="text-gray-400 text-sm">
+                            Comment intégrer ArchCpy dans votre flux de travail pour capturer des archimonsters rapidement.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tutorial 3 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-blue-500 mb-2"></i>
+                            <p class="text-gray-300">Fonctionnalités avancées</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Astuces Avancées</h3>
+                        <p class="text-gray-400 text-sm">
+                            Découvrez les fonctionnalités avancées et raccourcis pour une expérience encore plus fluide.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Tarification <span class="text-yellow-400">Simple</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Une seule formule, sans abonnement, accès à vie à Archi-Copy
+            </p>
+            
+            <div class="max-w-xl mx-auto">
+                <div class="bg-gray-900/70 rounded-xl overflow-hidden border-2 border-blue-500/30 transform hover:scale-[1.01] transition-all duration-300">
+                    <div class="bg-gray-800 p-6 text-center border-b border-gray-700">
+                        <h3 class="text-2xl font-bold text-yellow-400">Licence à Vie</h3>
+                        <div class="flex justify-center mt-4">
+                            <span class="text-4xl font-bold text-white">€20</span>
+                            <span class="text-gray-400 ml-2 self-end mb-1">paiement unique</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Accès illimité à vie à l'outil complet</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Toutes les mises à jour futures incluses</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Support prioritaire via Discord</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Base de données complète d'archimonsters</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Garantie satisfaction 100%</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="grid grid-cols-3 gap-4 text-center mb-8">
+                            <div>
+                                <p class="font-bold text-white">200 MAD</p>
+                                <p class="text-xs text-gray-400">Dirham</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">€20</p>
+                                <p class="text-xs text-gray-400">Euro</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">$22</p>
+                                <p class="text-xs text-gray-400">USD/Crypto</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="index.html#contact" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition inline-flex items-center">
+                                <i class="fas fa-shopping-cart mr-2"></i> Acheter maintenant
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-gray-800/50 p-4 rounded-xl border border-yellow-500/30 text-center">
+                    <p class="text-gray-300 text-sm">
+                        <i class="fas fa-shield-alt text-yellow-500 mr-2"></i>
+                        Garantie de remboursement à 100% si l'outil ne fonctionne pas comme prévu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gradient-to-r from-gray-900/70 to-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Questions <span class="text-blue-400">Fréquentes</span>
+            </h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Archi-Copy contient-il tous les archimonsters de Dofus?</h4>
+                    <p class="text-gray-300">
+                        Oui, Archi-Copy contient la liste complète et à jour de tous les archimonsters disponibles dans Dofus.
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Puis-je utiliser Archi-Copy avec plusieurs fenêtres de jeu?</h4>
+                    <p class="text-gray-300">
+                        Absolument! Archi-Cpy est conçu pour rester visible par-dessus toutes vos fenêtres de jeu, vous permettant de récupérer des archimonsters sur plusieurs comptes sans difficulté.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Comment l'application garde-t-elle ma position dans la liste?</h4>
+                    <p class="text-gray-300">
+                        Archi-Copy mémorise votre progression dans la liste des archimonsters entre chaque utilisation, vous permettant de reprendre exactement là où vous vous êtes arrêté lors de votre dernière session.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Est-ce que l'utilisation de cet outil est autorisée par Dofus?</h4>
+                    <p class="text-gray-300">
+                        Oui, Archi-Copy est simplement un outil d'assistance qui ne modifie pas le client de jeu ni n'automatise vos actions dans le jeu. Il facilite uniquement le processus de copier-coller des noms d'archimonsters.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Quelles sont les exigences système?</h4>
+                    <p class="text-gray-300">
+                        Configuration minimale: Windows 10/11, 2GB de RAM. L'application est légère et conçue pour fonctionner en arrière-plan sans affecter les performances du jeu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-900/50 p-8 rounded-xl border border-blue-500/30 text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">
+                    Prêt à <span class="text-blue-400">Accélérer</span> votre chasse aux archimonsters?
+                </h2>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Rejoignez des centaines de joueurs qui récupèrent leurs archimonsters plus rapidement grâce à l'assistant le plus efficace pour Dofus.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="index.html#contact" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition inline-flex items-center justify-center">
+                        <i class="fas fa-shopping-cart mr-2"></i> Acheter maintenant
+                    </a>
+                    <a href="#demo" class="px-8 py-3 border border-blue-500 text-blue-500 hover:bg-blue-500/10 rounded-md font-medium transition inline-flex items-center justify-center">
+                        <i class="fas fa-play mr-2"></i> Voir la démo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg border-t border-purple-900/50 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="logo-hammer text-xl text-yellow-400">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <span class="text-lg font-bold text-white">Dofus<span class="text-green-400">Tools</span></span>
+                    </a>
+                </div>
+                
+                <div class="text-gray-400 text-sm mb-4 md:mb-0 text-center">
+                    © 2025 DofusTools. Tous droits réservés.
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="index.html#contact" class="text-gray-400 hover:text-blue-400 transition">
+                        <i class="fab fa-discord text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-800/50 text-center">
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">Accueil</a>
+                    <a href="index.html#products" class="text-gray-400 hover:text-white transition">Nos Produits</a>
+                    <a href="index.html#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            // In a real implementation, you would add a click handler to show/hide mobile menu
+        });
+    </script>
+</body>
+</html>

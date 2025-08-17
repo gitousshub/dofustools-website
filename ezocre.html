@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>DofusTools - Ez Ocre - Détection d'Archimonstres</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Oxanium', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a3a 0%, #0d0d25 100%);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(168, 85, 247, 0.2);
+        }
+        
+        .logo-container {
+            position: relative;
+        }
+        
+        .logo-hammer {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        
+        .feature-icon {
+            color: #a855f7;
+            font-size: 1.5rem;
+        }
+        
+        .price-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .discord-btn {
+            background: #5865F2;
+            transition: all 0.3s;
+        }
+        
+        .discord-btn:hover {
+            background: #4752C4;
+            transform: translateY(-2px);
+        }
+        
+        .screenshot-placeholder {
+            background: linear-gradient(45deg, #1a1a3a 25%, #2a2a4a 50%, #1a1a3a 75%);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg border-b border-purple-900/50 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="logo-container">
+                        <div class="logo-glow"></div>
+                        <div class="logo-hammer text-3xl text-yellow-400">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                    </div>
+                    <span class="text-xl font-bold text-white">Dofus<span class="text-purple-400">Tools</span></span>
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-300 hover:text-white transition">Accueil</a>
+                <a href="index.html#products" class="text-gray-300 hover:text-white transition">Nos Produits</a>
+                <a href="index.html#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="index.html#contact" class="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-md font-medium transition">Acheter</a>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <span class="neon-text">Ez Ocre</span>
+                </h1>
+                <div class="w-24 h-1 bg-purple-500 mb-8"></div>
+                <p class="text-gray-300 mb-8 text-lg max-w-3xl">
+                    Outil intelligent qui regroupe automatiquement les archimonstres en packs prêts à l’emploi, évitant ainsi la récupération manuelle un par un. Ce système accélère considérablement la préparation de vos packs et rend le processus beaucoup plus efficace.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#pricing" class="px-6 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-md font-medium text-center transition">Acheter maintenant</a>
+                    <a href="#demo" class="px-6 py-3 border border-purple-500 text-purple-500 hover:bg-purple-500/10 rounded-md font-medium text-center transition">
+                        <i class="fas fa-play mr-2"></i>Voir la Démo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tool Overview -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Vue d'ensemble de <span class="text-purple-400">Ez Ocre</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Qu'est-ce que Ez Ocre?</h3>
+                        <p class="text-gray-300">
+                            Ez Ocre est un système intelligent qui utilise des technologies avancées pour détecter et trier automatiquement les archimonstres dans Dofus. Cet outil a une interface intuitive, qui vous de localiser et récupérer efficacement vos archimonstres sans jamais accéder à la mémoire du jeu.
+                        </p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Pourquoi l'utiliser?</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span>Système de détection avancé qui identifie les archimonstres efficacement</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span>Interface intuitive qui affiche tous les archimonstres disponibles</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span>Intégration Metamob pour mettre à jour automatiquement vos quantités et statuts (RECHERCHER/PROPOSER/AUCUN)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span>Système entièrement légal qui n'accède pas à la mémoire du jeu</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span>Parfait pour les chasseurs d'archimonstres cherchant à optimiser leur temps</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="screenshot-placeholder rounded-xl overflow-hidden border border-purple-500/30 aspect-video"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-4">
+                Fonctionnalités <span class="text-yellow-400">Principales</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Notre système de détection d'archimonstres combine technologie avancée et interface intuitive pour une expérience optimale
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Détection Intelligente</h3>
+                    <p class="text-gray-300">
+                        Technologie avancée qui localise et récupère les archimonstres sans accéder à la mémoire du jeu.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Tri Personnalisé</h3>
+                    <p class="text-gray-300">
+                        Triage des archimonstres selon vos préférences : par niveau, par zone, par type, ou par valeur.
+                    </p>
+                </div>
+                
+            
+                
+                <!-- Feature 4 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Système d'Alertes (bientôt disponible)</h3>
+                    <p class="text-gray-300">
+                        Une notification vous sera envoyée via Discord ou par un autre moyen (à voir) dès que le tri des archimonstres est terminé.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Intégration Metamob</h3>
+                    <p class="text-gray-300">
+                        Scanne automatiquement les quantités d'archimonstres en votre possession et met à jour votre profil Metamob avec les statuts corrects (RECHERCHER/PROPOSER/AUCUN).
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Historique de session (Bêta)</h3>
+                    <p class="text-gray-300">
+                        Fonctionnalité de logs détaillés vous permettant de consulter l’historique complet de votre session, avec toutes les informations nécessaires pour savoir exactement ce qui s’est passé à chaque étape.
+                    </p>
+                </div>
+                
+    
+                
+                <!-- Feature 8 -->
+                <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition h-full">
+                    <div class="feature-icon mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Conformité Totale</h3>
+                    <p class="text-gray-300">
+                        Outil développé dans le respect des règles du jeu, sans accès à la mémoire ou aux fichiers de Dofus, garantissant une utilisation 100% sécurisée.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-16 bg-gray-900/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Voir <span class="text-purple-400">Ez Ocre</span> en Action
+            </h2>
+            
+            <!-- Demo Video -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="aspect-w-16 aspect-h-9 bg-black rounded-xl overflow-hidden border border-gray-700 relative">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-play-circle text-6xl text-purple-500 mb-4 hover:text-purple-400 cursor-pointer transition"></i>
+                            <p class="text-gray-300">Cliquez pour lancer la vidéo de démonstration</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-center text-white mb-8">
+                Démonstration
+            </h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Interface tactique</p>
+                    </div>
+                </div>
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Analyse de situation</p>
+                    </div>
+                </div>
+                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
+                        <p class="text-gray-400">Éditeur de stratégies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 bg-gradient-to-r from-gray-900/70 to-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Comment <span class="text-purple-400">Ça Fonctionne</span>
+            </h2>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-purple-400 text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Installation</h3>
+                        <p class="text-gray-300">
+                            Téléchargez et installez Ez Ocre sur votre ordinateur et lancez l'application en parallèle de votre jeu Dofus.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-purple-400 text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Configuration</h3>
+                        <p class="text-gray-300">
+                            Configurez vos préférences de détection et de filtrage d'archimonstres selon vos objectifs.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-purple-400 text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Lancement</h3>
+                        <p class="text-gray-300">
+                            Suivez en temps réel le scan ou la récupération des archimonstres.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition text-center">
+                        <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-purple-400 text-2xl font-bold">4</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Metamob</h3>
+                        <p class="text-gray-300">
+                            Utilisez la fonction de scan pour détecter automatiquement vos archimonstres et mettre à jour votre profil Metamob avec les quantités et statuts exacts.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-300 max-w-3xl mx-auto mb-8">
+                        Notre système utilise des technologies avancées pour détecter les archimonstres tout en respectant les règles du jeu. Aucun accès à la mémoire n'est effectué, garantissant une utilisation 100% sécurisée.
+                    </p>
+                    
+                    <a href="#tutorials" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition inline-flex items-center">
+                        <i class="fas fa-book mr-2"></i> Voir les tutoriels détaillés
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorials -->
+    <section id="tutorials" class="py-16 bg-gray-900/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Tutoriels <span class="text-purple-400">Vidéo</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Apprenez à utiliser Ez Ocre efficacement avec nos tutoriels vidéo détaillés
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tutorial 1 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-purple-500 mb-2"></i>
+                            <p class="text-gray-300">Installation et configuration</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Guide d'Installation</h3>
+                        <p class="text-gray-400 text-sm">
+                            Comment installer EzOcre et configurer l'interface pour optimiser votre chasse aux archimonstres.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tutorial 2 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-purple-500 mb-2"></i>
+                            <p class="text-gray-300">Filtrage des archimonstres</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Options de Filtrage</h3>
+                        <p class="text-gray-400 text-sm">
+                            Découvrez comment personnaliser vos filtres pour cibler les archimonstres qui correspondent à vos objectifs.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tutorial 3 -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-purple-500 mb-2"></i>
+                            <p class="text-gray-300">Système d'alertes</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Notifications Personnalisées (bientôt disponible)</h3>
+                        <p class="text-gray-400 text-sm">
+                            Comment configurer des alertes pour être notifié lorsque le tri des archimonstres est terminé.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tutorial 4 - NEW -->
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
+                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <i class="fas fa-play-circle text-4xl text-purple-500 mb-2"></i>
+                            <p class="text-gray-300">Intégration Metamob</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Synchronisation Automatique</h3>
+                        <p class="text-gray-400 text-sm">
+                            Comment utiliser le scanner pour détecter vos archimonstres et mettre à jour automatiquement votre profil Metamob avec les bons statuts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-8">
+                Tarification <span class="text-yellow-400">Simple</span>
+            </h2>
+            <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                Une seule formule, sans abonnement, accès à vie à Ez Ocre
+            </p>
+            
+            <div class="max-w-xl mx-auto">
+                <div class="bg-gray-900/70 rounded-xl overflow-hidden border-2 border-purple-500/30 transform hover:scale-[1.01] transition-all duration-300">
+                    <div class="bg-gray-800 p-6 text-center border-b border-gray-700">
+                        <h3 class="text-2xl font-bold text-yellow-400">Licence à Vie</h3>
+                        <div class="flex justify-center mt-4">
+                            <span class="text-4xl font-bold text-white">€60</span>
+                            <span class="text-gray-400 ml-2 self-end mb-1">paiement unique</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Accès illimité à vie à l'outil complet</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Toutes les mises à jour futures incluses</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Support prioritaire via Discord</span>
+                            </li>
+                           
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
+                                <span class="text-gray-300">Garantie satisfaction 100%</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="grid grid-cols-3 gap-4 text-center mb-8">
+                            <div>
+                                <p class="font-bold text-white">650 MAD</p>
+                                <p class="text-xs text-gray-400">Dirham</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">100M</p>
+                                <p class="text-xs text-gray-400">Kamas</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">$70</p>
+                                <p class="text-xs text-gray-400">USD/Crypto</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="index.html#contact" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md font-medium transition inline-flex items-center">
+                                <i class="fas fa-shopping-cart mr-2"></i> Acheter maintenant
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-gray-800/50 p-4 rounded-xl border border-yellow-500/30 text-center">
+                    <p class="text-gray-300 text-sm">
+                        <i class="fas fa-shield-alt text-yellow-500 mr-2"></i>
+                        Garantie de remboursement à 100% si l'outil ne fonctionne pas comme prévu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gradient-to-r from-gray-900/70 to-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">
+                Questions <span class="text-purple-400">Fréquentes</span>
+            </h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">L'utilisation d'Ez Ocre est-elle autorisée par les règles de Dofus?</h4>
+                    <p class="text-gray-300">
+                        Oui, Ez Ocre a été conçu dans le respect des règles du jeu. Notre outil n'accède jamais à la mémoire du jeu, ni ne modifie ses fichiers. Il utilise uniquement des informations accessibles publiquement.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Comment Ez Ocre détecte-t-il les archimonstres sans botting?</h4>
+                    <p class="text-gray-300">
+                        Ez Ocre utilise des technologies avancées telles que l’OCR pour reconnaître la forme et la couleur des pierres d’âme, permettant ainsi d’identifier les archimonstres de manière fiable, sans jamais interagir avec le client du jeu ou sa mémoire.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Comment fonctionne l'intégration avec Metamob?</h4>
+                    <p class="text-gray-300">
+                        Ez Ocre peut scanner votre inventaire et détecter automatiquement le nombre exact de chaque archimontre que vous possédez. L'outil met ensuite à jour votre profil Metamob avec les quantités correctes et définit automatiquement les statuts appropriés (RECHERCHER, PROPOSER ou AUCUN) en fonction de vos préférences et des quantités détectées.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-white mb-3">Quelles sont les exigences système?</h4>
+                    <p class="text-gray-300">
+                        Configuration minimale: Windows 10/11, 4GB de RAM, processeur dual-core. Ez Ocre est optimisé pour fonctionner avec une empreinte système minimale, vous permettant de l'utiliser en parallèle de Dofus sans impact sur les performances du jeu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-900/50 p-8 rounded-xl border border-purple-500/30 text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">
+                    Prêt à <span class="text-purple-400">Révolutionner</span> votre chasse aux archimonstres?
+                </h2>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Rejoignez les chasseurs d'élite qui utilisent Ez Ocre pour préparer efficacement vos packs d'archimonstres.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="index.html#contact" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md font-medium transition inline-flex items-center justify-center">
+                        <i class="fas fa-shopping-cart mr-2"></i> Acheter maintenant
+                    </a>
+                    <a href="#demo" class="px-8 py-3 border border-purple-500 text-purple-500 hover:bg-purple-500/10 rounded-md font-medium transition inline-flex items-center justify-center">
+                        <i class="fas fa-play mr-2"></i> Voir la démo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg border-t border-purple-900/50 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="logo-hammer text-xl text-yellow-400">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <span class="text-lg font-bold text-white">Dofus<span class="text-purple-400">Tools</span></span>
+                    </a>
+                </div>
+                
+                <div class="text-gray-400 text-sm mb-4 md:mb-0 text-center">
+                    © 2025 DofusTools. Tous droits réservés.
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="index.html#contact" class="text-gray-400 hover:text-purple-400 transition">
+                        <i class="fab fa-discord text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-800/50 text-center">
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">Accueil</a>
+                    <a href="index.html#products" class="text-gray-400 hover:text-white transition">Nos Produits</a>
+                    <a href="index.html#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            // In a real implementation, you would add a click handler to show/hide mobile menu
+        });
+    </script>
+</body>
+</html>
