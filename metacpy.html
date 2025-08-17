@@ -330,59 +330,28 @@
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- First screenshot -->
                 <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
-                    <img src="images/button-copy.png" 
+                    <img src="https://carrykov.github.io/dofustools-website/images/button-copy.png" 
                          alt="Boutons de copie sur Metamob" 
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover"
+                         onerror="this.onerror=null; this.src='images/button-copy.png';">
                 </div>
+                
                 <!-- Second screenshot -->
                 <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
-                    <img src="images/button-copy-selected.png" 
+                    <img src="https://carrykov.github.io/dofustools-website/images/button-copy-selected.png" 
                          alt="Visualisation des coches après copie" 
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover"
+                         onerror="this.onerror=null; this.src='images/button-copy-selected.png';">
                 </div>
+                
                 <!-- Third screenshot -->
                 <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
-                    <img src="images/section-trade-selected.png" 
+                    <img src="https://carrykov.github.io/dofustools-website/images/section-trade-selected.png" 
                          alt="Section trade avec noms cliquables" 
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover"
+                         onerror="this.onerror=null; this.src='images/section-trade-selected.png';">
                 </div>
             </div>
-            
-            <script>
-                // Function to handle image loading errors
-                document.addEventListener('DOMContentLoaded', function() {
-                    const fixBrokenImages = () => {
-                        const images = document.querySelectorAll('img');
-                        images.forEach(img => {
-                            if (!img.complete || img.naturalHeight === 0) {
-                                const src = img.src;
-                                const fileName = src.split('/').pop();
-                                
-                                // First try relative with "../images"
-                                img.src = '../images/' + fileName;
-                                
-                                img.onerror = function() {
-                                    // Then try without "../"
-                                    img.src = 'images/' + fileName;
-                                    
-                                    img.onerror = function() {
-                                        // Then try with absolute path to the website
-                                        img.src = 'https://dofustools.xyz/images/' + fileName;
-                                        
-                                        img.onerror = function() {
-                                            // Finally try with GitHub raw content
-                                            img.src = 'https://raw.githubusercontent.com/carrykov/dofustools-website/main/images/' + fileName;
-                                        };
-                                    };
-                                };
-                            }
-                        });
-                    };
-                    
-                    // Try to fix images when page loads
-                    setTimeout(fixBrokenImages, 500);
-                });
-            </script>
         </div>
     </section>
 
