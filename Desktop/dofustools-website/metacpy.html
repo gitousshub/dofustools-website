@@ -115,6 +115,11 @@
             height: 100%;
             border: none;
         }
+        
+        /* Custom aspect ratio for images */
+        .aspect-video {
+            aspect-ratio: 16 / 9;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -323,21 +328,21 @@
             </h3>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- First image with placeholder that definitely works -->
+                <!-- First image with simple local path -->
                 <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
-                    <img src="https://via.placeholder.com/640x360/1a1a3a/00ff9d?text=Boutons+de+copie" 
+                    <img src="images/button-copy.png" 
                          alt="Boutons de copie sur Metamob" 
                          class="w-full h-full object-cover">
                 </div>
-                <!-- Second image with placeholder that definitely works -->
+                <!-- Second image with simple local path -->
                 <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
-                    <img src="https://via.placeholder.com/640x360/1a1a3a/00ff9d?text=Visualisation+des+coches" 
+                    <img src="images/button-copy-selected.png" 
                          alt="Visualisation des coches après copie" 
                          class="w-full h-full object-cover">
                 </div>
-                <!-- Third image with placeholder that definitely works -->
+                <!-- Third image with simple local path -->
                 <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
-                    <img src="https://via.placeholder.com/640x360/1a1a3a/00ff9d?text=Section+trade" 
+                    <img src="images/section-trade-selected.png" 
                          alt="Section trade avec noms cliquables" 
                          class="w-full h-full object-cover">
                 </div>
