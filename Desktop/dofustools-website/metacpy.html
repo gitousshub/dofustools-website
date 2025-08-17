@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DofusTools - Récupération de Pierres d'Âme (MetaCpy)</title>
+    <title>DofusTools - Outil de Copie Metamob (MetaCpy)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -98,6 +98,23 @@
                 background-position: 0% 50%;
             }
         }
+        
+        /* Aspect ratio styles for iframe YouTube videos */
+        .aspect-w-16 {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .aspect-w-16 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -134,11 +151,11 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center text-center">
                 <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-                    <span class="neon-text">Récupération de Pierres d'Âme</span>
+                    <span class="neon-text">Meta-Copy</span>
                 </h1>
                 <div class="w-24 h-1 bg-green-500 mb-8"></div>
                 <p class="text-gray-300 mb-8 text-lg max-w-3xl">
-                    L'outil de tri automatique de pierres d'âme le plus avancé pour Dofus. Économisez des heures de tri manuel et maximisez la valeur de vos captures d'âmes.
+                    L'extension qui ajoute un bouton de copie rapide sur Metamob.fr pour capturer les archimonsters plus efficacement. Gagnez du temps avec des fonctionnalités visuelles intelligentes.
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="#pricing" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-md font-medium text-center transition">Acheter maintenant</a>
@@ -154,15 +171,15 @@
     <section class="py-16 bg-gray-900/50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center text-white mb-12">
-                Vue d'ensemble de <span class="text-green-400">MetaCpy</span>
+                Vue d'ensemble de <span class="text-green-400">Meta-Copy</span>
             </h2>
             
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-white mb-4">Qu'est-ce que MetaCpy?</h3>
+                        <h3 class="text-2xl font-bold text-white mb-4">Qu'est-ce que Meta-Copy?</h3>
                         <p class="text-gray-300">
-                            MetaCpy est un système avancé d'automatisation pour la gestion des pierres d'âme dans Dofus. Grâce à notre technologie propriétaire de vision par ordinateur, l'outil identifie, trie et organise automatiquement vos pierres d'âmes, économisant des heures de travail manuel.
+                            Meta-Copy est un script pour l'extension "User JavaScript and CSS" qui améliore l'expérience utilisateur sur Metamob.fr. Il ajoute un bouton de copie à côté du nom de chaque monstre et des indicateurs visuels pour faciliter le suivi des archimonsters que vous avez copiés.
                         </p>
                     </div>
                     
@@ -171,25 +188,29 @@
                         <ul class="space-y-3 text-gray-300">
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span>Économisez des heures de tri manuel fastidieux</span>
+                                <span>Copiez les noms d'archimonsters en un seul clic au lieu de les sélectionner manuellement</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span>Détection précise à 99.9% des âmes, y compris les archimonstres</span>
+                                <span>Indicateurs visuels montrant le dernier monstre copié (bouton qui devient une coche ✅)</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span>Intégration complète avec Metamob.fr pour suivre votre collection</span>
+                                <span>Les noms avec cases blanches dans la section Trade "Communauté" deviennent cliquables pour copie rapide</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span>Traitement ultra-rapide: jusqu'à 1000 pierres par heure</span>
+                                <span>Mise en évidence en rouge du dernier nom copié dans la section Trade pour un suivi facile</span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="screenshot-placeholder rounded-xl overflow-hidden border border-green-500/30 aspect-video"></div>
+                <div class="rounded-xl overflow-hidden border border-green-500/30 aspect-video">
+                    <img src="https://gitousshub.github.io/dofustools-website/images/Button-copy.png" 
+                         alt="Meta-Copy en action" 
+                         class="w-full h-full object-cover">
+                </div>
             </div>
         </div>
     </section>
@@ -201,73 +222,73 @@
                 Fonctionnalités <span class="text-yellow-400">Principales</span>
             </h2>
             <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
-                Notre outil combine plusieurs technologies avancées pour offrir une expérience de tri d'âmes sans précédent
+                Notre script améliore l'expérience utilisateur de Metamob.fr avec des fonctionnalités de copie intelligentes
             </p>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Feature 1 -->
                 <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
                     <div class="feature-icon mb-4">
-                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-copy"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Vision par Ordinateur Avancée</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">Bouton de Copie</h3>
                     <p class="text-gray-300">
-                        Algorithmes propriétaires utilisant OpenCV pour détecter avec précision chaque pierre d'âme, quel que soit le thème d'interface ou la résolution d'écran utilisée.
+                        Ajout de bouton de copie à côté de chaque nom d'archimonster pour copier instantanément sans avoir à sélectionner le texte manuellement.
                     </p>
                 </div>
                 
                 <!-- Feature 2 -->
                 <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
                     <div class="feature-icon mb-4">
-                        <i class="fas fa-brain"></i>
+                        <i class="fas fa-check-square"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Détection Multi-Méthodes</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">Indicateurs Visuels</h3>
                     <p class="text-gray-300">
-                        Utilisation de 7 algorithmes différents fonctionnant en parallèle pour assurer une précision inégalée, même dans des conditions difficiles.
+                        Transformation des boutons en coches après utilisation pour vous permettre de suivre facilement le dernier nom copié.
                     </p>
                 </div>
                 
                 <!-- Feature 3 -->
                 <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
                     <div class="feature-icon mb-4">
-                        <i class="fas fa-sync-alt"></i>
+                        <i class="fas fa-exchange-alt"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Intégration Metamob.fr</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">Amélioration Section Échange</h3>
                     <p class="text-gray-300">
-                        Synchronisation transparente avec votre compte Metamob pour mettre à jour automatiquement votre collection et prioriser les pierres dont vous avez besoin.
+                        Transformation des noms avec cases blanches en liens cliquables dans la section échange pour une copie rapide de vos besoins.
                     </p>
                 </div>
                 
                 <!-- Feature 4 -->
                 <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
                     <div class="feature-icon mb-4">
-                        <i class="fas fa-map-marked-alt"></i>
+                        <i class="fas fa-highlighter"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Calibrage Intelligent</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">Surlignage Intelligent</h3>
                     <p class="text-gray-300">
-                        Système de calibrage automatique pour les positions d'inventaire et de banque, garantissant une précision au pixel près lors des manipulations.
+                        Mise en évidence en rouge du dernier nom copié pour une identification visuelle rapide et intuitive durant vos sessions de trade.
                     </p>
                 </div>
                 
                 <!-- Feature 5 -->
                 <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
                     <div class="feature-icon mb-4">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-puzzle-piece"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Suivi de Progression</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">Installation Facile</h3>
                     <p class="text-gray-300">
-                        Tableau de bord détaillé affichant les statistiques de votre session: nombre d'âmes triées, types identifiés, temps d'exécution et bien plus.
+                        Simple à configurer avec l'extension "User JavaScript and CSS" - un copier-coller du script et vous êtes prêt à l'utiliser.
                     </p>
                 </div>
                 
                 <!-- Feature 6 -->
                 <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition h-full">
                     <div class="feature-icon mb-4">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Sécurité Maximale</h3>
+                    <h3 class="text-xl font-bold text-white mb-2">Performances Optimales</h3>
                     <p class="text-gray-300">
-                        Algorithmes de simulation de mouvements humains et fonctionnalités anti-détection pour une utilisation discrète et sécurisée.
+                        Script léger qui ne ralentit pas votre navigation, conçu pour fonctionner parfaitement avec toutes les fonctionnalités de Metamob.fr.
                     </p>
                 </div>
             </div>
@@ -278,18 +299,18 @@
     <section id="demo" class="py-16 bg-gray-900/30">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center text-white mb-8">
-                Voir <span class="text-green-400">MetaCpy</span> en Action
+                Voir <span class="text-green-400">Meta-Copy</span> en Action
             </h2>
             
             <!-- Demo Video -->
             <div class="max-w-4xl mx-auto mb-16">
-                <div class="aspect-w-16 aspect-h-9 bg-black rounded-xl overflow-hidden border border-gray-700 relative">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="text-center">
-                            <i class="fas fa-play-circle text-6xl text-green-500 mb-4 hover:text-green-400 cursor-pointer transition"></i>
-                            <p class="text-gray-300">Cliquez pour lancer la vidéo de démonstration</p>
-                        </div>
-                    </div>
+                <div class="aspect-w-16 rounded-xl overflow-hidden border border-gray-700">
+                    <iframe src="https://www.youtube.com/embed/7DeRctHLzyc" 
+                        title="Démonstration de Meta-Copy" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
             
@@ -298,23 +319,20 @@
             </h3>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
-                    <div class="text-center">
-                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
-                        <p class="text-gray-400">Interface principale</p>
-                    </div>
+                <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
+                    <img src="https://gitousshub.github.io/dofustools-website/images/Button-copy.png" 
+                         alt="Boutons de copie sur Metamob" 
+                         class="w-full h-full object-cover">
                 </div>
-                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
-                    <div class="text-center">
-                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
-                        <p class="text-gray-400">Détection en action</p>
-                    </div>
+                <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
+                    <img src="https://gitousshub.github.io/dofustools-website/images/Button-copy-selected.png" 
+                         alt="Visualisation des coches après copie" 
+                         class="w-full h-full object-cover">
                 </div>
-                <div class="screenshot-placeholder rounded-xl aspect-video flex items-center justify-center">
-                    <div class="text-center">
-                        <i class="fas fa-image text-4xl text-gray-600 mb-2"></i>
-                        <p class="text-gray-400">Tableau de bord</p>
-                    </div>
+                <div class="rounded-xl aspect-video overflow-hidden border border-gray-700">
+                    <img src="https://gitousshub.github.io/dofustools-website/images/Section-trade-selected.png" 
+                         alt="Section trade avec noms cliquables" 
+                         class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -334,9 +352,9 @@
                         <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
                             <span class="text-green-400 text-2xl font-bold">1</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Installation Simple</h3>
+                        <h3 class="text-xl font-bold text-white mb-3">Installation</h3>
                         <p class="text-gray-300">
-                            Téléchargez l'outil et suivez notre assistant d'installation guidé. Configuration en moins de 5 minutes.
+                            Installez l'extension "User JavaScript and CSS" dans votre navigateur puis ajoutez notre script pour Metamob.fr.
                         </p>
                     </div>
                     
@@ -345,9 +363,9 @@
                         <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
                             <span class="text-green-400 text-2xl font-bold">2</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Calibrage</h3>
+                        <h3 class="text-xl font-bold text-white mb-3">Utilisation</h3>
                         <p class="text-gray-300">
-                            L'outil calibre automatiquement les positions de vos inventaires et banques pour une précision maximale.
+                            Accédez à Metamob.fr et remarquez les boutons de copie à côté des noms d'archimonsters et les noms cliquables dans la section échange.
                         </p>
                     </div>
                     
@@ -356,17 +374,17 @@
                         <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
                             <span class="text-green-400 text-2xl font-bold">3</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Automatisation</h3>
+                        <h3 class="text-xl font-bold text-white mb-3">Gain de Temps</h3>
                         <p class="text-gray-300">
-                            Lancez le processus et observez l'outil trier automatiquement vos pierres d'âme avec une précision incroyable.
+                            Profitez d'un processus de copie rapide avec des indicateurs visuels qui facilitent le suivi des archimonsters que vous avez déjà copiés.
                         </p>
                     </div>
                 </div>
                 
                 <div class="mt-12 text-center">
                     <p class="text-gray-300 max-w-3xl mx-auto mb-8">
-                        Notre outil est conçu pour être simple d'utilisation tout en offrant des performances exceptionnelles. 
-                        Pas besoin d'être un expert en informatique pour l'utiliser efficacement.
+                        Notre script est conçu pour être simple et léger tout en améliorant considérablement votre expérience sur Metamob.fr.
+                        Vous gagnerez un temps précieux lors de vos sessions de trade.
                     </p>
                     
                     <a href="#tutorials" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition inline-flex items-center">
@@ -384,54 +402,42 @@
                 Tutoriels <span class="text-green-400">Vidéo</span>
             </h2>
             <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
-                Apprenez à utiliser MetaCpy efficacement avec nos tutoriels vidéo détaillés
+                Apprenez à utiliser Meta-Copy efficacement avec nos tutoriels vidéo détaillés
             </p>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
                 <!-- Tutorial 1 -->
-                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
-                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <i class="fas fa-play-circle text-4xl text-green-500 mb-2"></i>
-                            <p class="text-gray-300">Installation et configuration</p>
-                        </div>
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 flex-1">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/esRyj_1Gztg" 
+                            title="Guide d'installation de Meta-Copy" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-white mb-2">Guide d'Installation</h3>
                         <p class="text-gray-400 text-sm">
-                            Apprenez à installer et configurer MetaCpy correctement pour des performances optimales.
+                            Comment installer l'extension "User JavaScript and CSS" et ajouter notre script pour Metamob.fr.
                         </p>
                     </div>
                 </div>
                 
                 <!-- Tutorial 2 -->
-                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
-                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <i class="fas fa-play-circle text-4xl text-green-500 mb-2"></i>
-                            <p class="text-gray-300">Calibrage avancé</p>
-                        </div>
+                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 flex-1">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/7DeRctHLzyc" 
+                            title="Guide d'utilisation de Meta-Copy" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div class="p-4">
-                        <h3 class="text-lg font-bold text-white mb-2">Calibrage Parfait</h3>
+                        <h3 class="text-lg font-bold text-white mb-2">Utilisation Efficace</h3>
                         <p class="text-gray-400 text-sm">
-                            Découvrez comment calibrer avec précision l'outil pour votre configuration spécifique.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Tutorial 3 -->
-                <div class="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700">
-                    <div class="aspect-w-16 aspect-h-9 bg-black flex items-center justify-center">
-                        <div class="text-center p-4">
-                            <i class="fas fa-play-circle text-4xl text-green-500 mb-2"></i>
-                            <p class="text-gray-300">Intégration Metamob</p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-white mb-2">Synchronisation Metamob</h3>
-                        <p class="text-gray-400 text-sm">
-                            Comment connecter votre compte Metamob.fr et synchroniser votre collection.
+                            Comment utiliser efficacement Meta-Copy avec Metamob.fr et Dofus pour un trade d'archimonstres rapide.
                         </p>
                     </div>
                 </div>
@@ -454,7 +460,7 @@
                     <div class="bg-gray-800 p-6 text-center border-b border-gray-700">
                         <h3 class="text-2xl font-bold text-yellow-400">Licence à Vie</h3>
                         <div class="flex justify-center mt-4">
-                            <span class="text-4xl font-bold text-white">€150</span>
+                            <span class="text-4xl font-bold text-white">€15</span>
                             <span class="text-gray-400 ml-2 self-end mb-1">paiement unique</span>
                         </div>
                     </div>
@@ -463,7 +469,7 @@
                         <ul class="space-y-4 mb-8">
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-300">Accès illimité à vie à l'outil complet</span>
+                                <span class="text-gray-300">Accès illimité à vie au script complet</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
@@ -475,7 +481,7 @@
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-300">Intégration Metamob complète</span>
+                                <span class="text-gray-300">Instructions d'installation détaillées</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
@@ -489,15 +495,15 @@
                         
                         <div class="grid grid-cols-3 gap-4 text-center mb-8">
                             <div>
-                                <p class="font-bold text-white">1 500 MAD</p>
+                                <p class="font-bold text-white">150 MAD</p>
                                 <p class="text-xs text-gray-400">Dirham</p>
                             </div>
                             <div>
-                                <p class="font-bold text-white">€150</p>
+                                <p class="font-bold text-white">€15</p>
                                 <p class="text-xs text-gray-400">Euro</p>
                             </div>
                             <div>
-                                <p class="font-bold text-white">$144</p>
+                                <p class="font-bold text-white">$17</p>
                                 <p class="text-xs text-gray-400">USD/Crypto</p>
                             </div>
                         </div>
@@ -519,84 +525,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Reviews -->
-    <section id="reviews" class="py-16 bg-gray-900/30">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-white mb-8">
-                Avis de nos <span class="text-green-400">Utilisateurs</span>
-            </h2>
-            
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <!-- Review 1 -->
-                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:transform hover:-translate-y-2 transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mr-3">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white">ArchmageX</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "J'ai trié plus de 2000 pierres d'âme en une seule soirée. L'intégration avec Metamob est parfaite et m'a fait économiser des heures de travail manuel. Merci!"
-                    </p>
-                </div>
-                
-                <!-- Review 2 -->
-                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:transform hover:-translate-y-2 transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mr-3">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white">SoulCollector99</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "La précision de détection est incroyable. Même les pierres les plus rares sont correctement identifiées. Le support client est également très réactif."
-                    </p>
-                </div>
-                
-                <!-- Review 3 -->
-                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:transform hover:-translate-y-2 transition duration-300">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mr-3">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white">DofusLegend</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">
-                        "J'étais sceptique au début, mais après avoir essayé l'outil, je suis convaincu. Installation simple, interface intuitive et résultats impressionnants. Ça vaut largement son prix!"
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- FAQ Section -->
     <section id="faq" class="py-16 bg-gradient-to-r from-gray-900/70 to-gray-900/50">
         <div class="container mx-auto px-4">
@@ -606,37 +534,37 @@
             
             <div class="max-w-3xl mx-auto space-y-6">
                 <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-                    <h4 class="text-xl font-bold text-white mb-3">L'outil est-il détectable par Ankama?</h4>
+                    <h4 class="text-xl font-bold text-white mb-3">L'utilisation de ce script est-elle autorisée par Metamob.fr?</h4>
                     <p class="text-gray-300">
-                        Notre outil utilise des techniques avancées pour simuler des interactions humaines et éviter la détection. Nous utilisons des mouvements de souris réalistes et des temps d'attente variables. Aucun de nos utilisateurs n'a signalé de bannissement lié à l'utilisation de notre outil depuis son lancement.
+                        Oui, ce script est simplement une amélioration de l'interface utilisateur qui facilite la copie des noms. Il ne modifie pas le contenu ou les fonctionnalités de base du site, il ne fait qu'ajouter des boutons et des indicateurs visuels pour améliorer l'expérience utilisateur.
                     </p>
                 </div>
                 
                 <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-                    <h4 class="text-xl font-bold text-white mb-3">Comment l'outil reconnaît-il les pierres d'âme?</h4>
+                    <h4 class="text-xl font-bold text-white mb-3">Comment installer l'extension "User JavaScript and CSS"?</h4>
                     <p class="text-gray-300">
-                        Notre système utilise une combinaison de techniques de vision par ordinateur, dont la reconnaissance de formes, l'analyse de couleurs et le traitement d'image avancé. Nous utilisons 7 méthodes différentes en parallèle pour garantir une détection fiable, même dans des conditions variables.
+                        L'extension est disponible pour la plupart des navigateurs populaires. Vous pouvez la trouver dans le Chrome Web Store, Firefox Add-ons, ou autres magasins d'extensions selon votre navigateur. Une fois installée, vous pourrez ajouter notre script spécifique pour Metamob.fr.
                     </p>
                 </div>
                 
                 <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-                    <h4 class="text-xl font-bold text-white mb-3">Puis-je utiliser l'outil pendant que je fais autre chose?</h4>
+                    <h4 class="text-xl font-bold text-white mb-3">Le script fonctionne-t-il avec tous les navigateurs?</h4>
                     <p class="text-gray-300">
-                        L'outil nécessite que la fenêtre Dofus soit active pendant son utilisation. Cependant, vous pouvez configurer des sessions automatisées et laisser l'outil fonctionner sans surveillance. Un mode multi-compte est également disponible pour les joueurs qui gèrent plusieurs personnages.
+                        Le script fonctionne avec tous les navigateurs qui supportent l'extension "User JavaScript and CSS", notamment Chrome, Firefox, Edge et Opera. Les instructions d'installation spécifiques sont fournies après l'achat.
                     </p>
                 </div>
                 
                 <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-                    <h4 class="text-xl font-bold text-white mb-3">Quelles sont les exigences système?</h4>
+                    <h4 class="text-xl font-bold text-white mb-3">Dois-je configurer quelque chose après l'installation?</h4>
                     <p class="text-gray-300">
-                        Configuration minimale: Windows 10/11, Python 3.8+ (installateur automatique inclus), 4GB de RAM. L'outil est optimisé pour fonctionner sur des configurations modestes sans impacter les performances de Dofus.
+                        Non, le script fonctionne automatiquement dès son installation. Il n'y a pas de paramètres supplémentaires à configurer. Vous verrez immédiatement les boutons de copie apparaître à côté des noms d'archimonsters sur Metamob.fr.
                     </p>
                 </div>
                 
                 <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
                     <h4 class="text-xl font-bold text-white mb-3">Comment puis-je obtenir de l'aide en cas de problème?</h4>
                     <p class="text-gray-300">
-                        Notre équipe de support est disponible via Discord. Temps de réponse moyen: quelques minutes à quelques heures maximum. Nous proposons également des sessions d'assistance à distance pour les problèmes complexes.
+                        Notre équipe de support est disponible via Discord. Nous vous aidons avec l'installation, les mises à jour ou tout autre problème que vous pourriez rencontrer avec le script. Des guides détaillés sont également fournis après l'achat.
                     </p>
                 </div>
             </div>
@@ -648,10 +576,10 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto bg-gray-900/50 p-8 rounded-xl border border-green-500/30 text-center">
                 <h2 class="text-3xl font-bold text-white mb-6">
-                    Prêt à <span class="text-green-400">Révolutionner</span> votre expérience de tri d'âmes?
+                    Prêt à <span class="text-green-400">Accélérer</span> votre chasse aux archimonsters?
                 </h2>
                 <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Rejoignez des centaines de joueurs satisfaits qui économisent des heures de travail fastidieux grâce à MetaCpy.
+                    Rejoignez des centaines de joueurs qui optimisent leur expérience sur Metamob.fr et tradent leurs archimonsters plus efficacement grâce à Meta-Copy.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="index.html#contact" class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium transition inline-flex items-center justify-center">
